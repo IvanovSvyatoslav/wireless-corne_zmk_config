@@ -271,37 +271,37 @@ MIRYOKU_DOUBLE_TAP_GUARD(u_to_U_FUN,    &to U_FUN)
       >;
     };
 
-    // ===== Layer 5: MOUSE (INVERTEDT - mouse at HJKL positions) =====
+    // ===== Layer 5: MOUSE (Vim-style - hjkl = ← ↓ ↑ →) =====
     //
     // ,------------------------------------------.  ,------------------------------------------.
-    // |      | BOOT | TAP  | EXTRA| BASE |      |  |      | WH_L | MS_U | WH_R | WH_U |      |
-    // |      | GUI  | ALT  | CTRL | SHIFT|      |  |      | MS_L | MS_D | MS_R | WH_D |      |
-    // |      |      | RALT | SYM  | MOUSE|      |  | REDO | PASTE| COPY | CUT  | UNDO |      |
+    // |      | BOOT | TAP  | EXTRA| BASE |      |  | REDO | PASTE| COPY | CUT  | UNDO |      |
+    // |      | GUI  | ALT  | CTRL | SHIFT|      |  | SC↑  | MS←  | MS↓  | MS↑  | MS→  |      |
+    // |      |      | RALT | SYM  | MOUSE|      |  | SC↓  | SC←  | WH_D | WH_U | SC→  |      |
     // `-------------|      |      |      |-------.  .------| BTN2 | BTN1 | BTN3 |-------------'
 
     MOUSE {
       display-name = "Mouse";
       bindings = <
-&none              &bootloader        &u_to_U_TAP        &u_to_U_EXTRA      &u_to_U_BASE       &none                &none              &msc SCRL_LEFT     &mmv MOVE_UP       &msc SCRL_RIGHT    &msc SCRL_UP       &none
-&none              &kp LGUI           &kp LALT           &kp LCTRL          &kp LSHFT          &none                &none              &mmv MOVE_LEFT     &mmv MOVE_DOWN     &mmv MOVE_RIGHT    &msc SCRL_DOWN     &none
-&none              &none              &kp RALT           &u_to_U_SYM        &u_to_U_MOUSE      &none                &kp LS(LG(Z))      &kp LG(V)          &kp LG(C)          &kp LG(X)          &kp LG(Z)          &none
+&none              &bootloader        &u_to_U_TAP        &u_to_U_EXTRA      &u_to_U_BASE       &none                &kp LS(LG(Z))      &kp LG(V)          &kp LG(C)          &kp LG(X)          &kp LG(Z)          &none
+&none              &kp LGUI           &kp LALT           &kp LCTRL          &kp LSHFT          &none                &msc SCRL_UP       &mmv MOVE_LEFT     &mmv MOVE_DOWN     &mmv MOVE_UP       &mmv MOVE_RIGHT    &none
+&none              &none              &kp RALT           &u_to_U_SYM        &u_to_U_MOUSE      &none                &msc SCRL_DOWN     &msc SCRL_LEFT     &msc SCRL_DOWN     &msc SCRL_UP       &msc SCRL_RIGHT    &none
                                        &none              &none              &none              &mkp MB2           &mkp MB1           &mkp MB3
       >;
     };
 
-    // ===== Layer 6: MEDIA (INVERTEDT - media at HJKL positions) =====
+    // ===== Layer 6: MEDIA (Vim-style - hjkl positions) =====
     //
     // ,------------------------------------------.  ,------------------------------------------.
-    // |      | BOOT | TAP  | EXTRA| BASE |      |  |RGBTOG|RGBEFF| VLUP |RGBHUI|RGBSAI|      |
-    // |      | GUI  | ALT  | CTRL | SHIFT|      |  |EP_TOG| PREV | VLDN | NEXT |RGBBRI|      |
+    // |      | BOOT | TAP  | EXTRA| BASE |      |  | RGB  | EFF  |RGBHUI|RGBSAI|RGBBRI|      |
+    // |      | GUI  | ALT  | CTRL | SHIFT|      |  |EP_TOG| PREV | VLDN | VLUP | NEXT |      |
     // |      |      | RALT | FUN  | MEDIA|      |  |OUTTOG| BT0  | BT1  | BT2  | BT3  |      |
     // `-------------|      |      |      |-------.  .------| STOP |  PP  | MUTE |-------------'
 
     MEDIA {
       display-name = "Media";
       bindings = <
-&none              &bootloader        &u_to_U_TAP        &u_to_U_EXTRA      &u_to_U_BASE       &none                &rgb_ug RGB_TOG    &rgb_ug RGB_EFF    &kp C_VOL_UP       &rgb_ug RGB_HUI    &rgb_ug RGB_SAI    &none
-&none              &kp LGUI           &kp LALT           &kp LCTRL          &kp LSHFT          &none                &ext_power EP_TOG  &kp C_PREV         &kp C_VOL_DN       &kp C_NEXT         &rgb_ug RGB_BRI    &none
+&none              &bootloader        &u_to_U_TAP        &u_to_U_EXTRA      &u_to_U_BASE       &none                &rgb_ug RGB_TOG    &rgb_ug RGB_EFF    &rgb_ug RGB_HUI    &rgb_ug RGB_SAI    &rgb_ug RGB_BRI    &none
+&none              &kp LGUI           &kp LALT           &kp LCTRL          &kp LSHFT          &none                &ext_power EP_TOG  &kp C_PREV         &kp C_VOL_DN       &kp C_VOL_UP       &kp C_NEXT         &none
 &none              &none              &kp RALT           &u_to_U_FUN        &u_to_U_MEDIA      &none                &u_out_tog         &u_bt_sel_0        &u_bt_sel_1        &u_bt_sel_2        &u_bt_sel_3        &none
                                        &none              &none              &none              &kp C_STOP         &kp C_PP           &kp C_MUTE
       >;
