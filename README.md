@@ -1,52 +1,150 @@
-# Boardsource Wireless Corne SMT Firmware
+# Miryoku — Wireless Corne SMT
 
-This repository contains the official ZMK configuration for the **Wireless Corne SMT**. This PCB is designed for a seamless, cable-free experience with full support for ZMK Studio.
-
-* **Product Page:** [Wireless Corne SMT PCB](https://boardsource.xyz/products/wireless-corne-smt-pcb-assembled-hot-swap-zmk-compatible-split-keyboard-pcb)
-* **Full Documentation & Build Guide:** [Wireless SMT Corne Docs](https://boardsource.xyz/blogs/guides/wireless-smt-corne-docs)
+QWERTY / Vim nav / Mac clipboard / Home row mods
 
 ---
 
-## Features
+## Base
 
-* **ZMK Studio Ready:** Change your keymap in real-time without reflashing.
-* **Fully Wireless:** No TRRS cable or USB connection required for standard use.
-* **Universal Support:** Works with MX, Choc v1, and Choc v2 switches.
-* **Pre-Flashed:** Ready to use out of the box.
+```
+╭─────┬─────┬─────┬─────┬─────┬─────╮   ╭─────┬─────┬─────┬─────┬─────┬─────╮
+│  `  │  Q  │  W  │  E  │  R  │  T  │   │  Y  │  U  │  I  │  O  │  P  │  '  │
+├─────┼─────┼─────┼─────┼─────┼─────┤   ├─────┼─────┼─────┼─────┼─────┼─────┤
+│  =  │A  ⌘│S  ⌥│D  ⌃│F  ⇧│  G  │   │  H  │J  ⇧│K  ⌃│L  ⌥│;  ⌘│  -  │
+├─────┼─────┼─────┼─────┼─────┼─────┤   ├─────┼─────┼─────┼─────┼─────┼─────┤
+│  [  │  Z  │X  ⌥│  C  │  V  │  B  │   │  N  │  M  │  ,  │.  ⌥│  /  │  ]  │
+╰─────┴─────┴──┬──┴──┬──┴──┬──┴─────╯   ╰─────┴──┬──┴──┬──┴──┬──┴─────┴─────╯
+               │ ESC │ SPC │ TAB │           │ RET │ BSP │⌘SPC│
+               │media│ nav │mouse│           │ sym │ num │ fun│
+               ╰─────┴─────┴─────╯           ╰─────┴─────┴─────╯
+```
 
----
+Тап = символ. Зажатие = модификатор/слой.
 
-## Expansion Pinout
+Русская раскладка (ЙЦУКЕН в macOS):
 
-The 8-pin header on each side (identical, not mirrored) is read from left to right. These are perfect for screens (nice!view / e-ink) or custom hardware.
-
-| Pin | GPIO | Note |
-| --- | --- | --- |
-| 1 | 0.07 |  |
-| 2 | 0.21 |  |
-| 3 | 0.12 |  |
-| 4 | 0.23 |  |
-| 5 | VCC | Switched via pin 0.31 |
-| 6 | GND |  |
-| 7 | 0.19 |  |
-| 8 | 0.05 |  |
-
----
-
-## Battery Information
-
-If shipping allows, batteries are included. The PCB features a micro JST connector (BM02B-ACHSS-GAN-ETF) and labeled solder pads (+/-) for custom installs.
-
-**Max Dimensions:**
-
-* **Choc:** 30x17x3mm
-* **MX:** 30x17x6mm
+```
+╭─────┬─────┬─────┬─────┬─────┬─────╮   ╭─────┬─────┬─────┬─────┬─────┬─────╮
+│  ё  │  й  │  ц  │  у  │  к  │  е  │   │  н  │  г  │  ш  │  щ  │  з  │  э  │
+├─────┼─────┼─────┼─────┼─────┼─────┤   ├─────┼─────┼─────┼─────┼─────┼─────┤
+│     │ф  ⌘│ы  ⌥│в  ⌃│а  ⇧│  п  │   │  р  │о  ⇧│л  ⌃│д  ⌥│ж  ⌘│     │
+├─────┼─────┼─────┼─────┼─────┼─────┤   ├─────┼─────┼─────┼─────┼─────┼─────┤
+│  х  │  я  │ч  ⌥│  с  │  м  │  и  │   │  т  │  ь  │  б  │ю  ⌥│  .  │  ъ  │
+╰─────┴─────┴──┬──┴──┬──┴──┬──┴─────╯   ╰─────┴──┬──┴──┬──┴──┬──┴─────┴─────╯
+               │     │     │     │           │     │     │     │
+               ╰─────┴─────┴─────╯           ╰─────┴─────┴─────╯
+```
 
 ---
 
-## How to Flash
+## Nav — зажать SPC
 
-1. **Modify:** Fork this repo and edit your files in the `config/` folder.
-2. **Build:** GitHub Actions will automatically compile your firmware.
-3. **Download:** Grab the `firmware.uf2` from the Actions tab.
-4. **Install:** Connect the board via USB, double-tap the reset button, and drag the file onto the drive.
+```
+╭─────┬─────┬─────┬─────┬─────┬─────╮   ╭─────┬─────┬─────┬─────┬─────┬─────╮
+│     │BOOT │ TAP │EXTRA│BASE │     │   │REDO │PASTE│COPY │ CUT │UNDO │     │
+├─────┼─────┼─────┼─────┼─────┼─────┤   ├─────┼─────┼─────┼─────┼─────┼─────┤
+│     │ ⌘  │ ⌥  │ ⌃  │ ⇧  │     │   │CAPS │  ←  │  ↓  │  ↑  │  →  │     │
+├─────┼─────┼─────┼─────┼─────┼─────┤   ├─────┼─────┼─────┼─────┼─────┼─────┤
+│     │     │ ⌥R │ NUM │ NAV │     │   │ INS │HOME │PG DN│PG UP│ END │     │
+╰─────┴─────┴──┬──┴──┬──┴──┬──┴─────╯   ╰─────┴──┬──┴──┬──┴──┬──┴─────┴─────╯
+               │     │█████│     │           │ RET │ BSP │ DEL │
+               ╰─────┴─────┴─────╯           ╰─────┴─────┴─────╯
+```
+
+---
+
+## Num — зажать BSP
+
+```
+╭─────┬─────┬─────┬─────┬─────┬─────╮   ╭─────┬─────┬─────┬─────┬─────┬─────╮
+│     │  [  │  7  │  8  │  9  │  ]  │   │     │BASE │EXTRA│ TAP │BOOT │     │
+├─────┼─────┼─────┼─────┼─────┼─────┤   ├─────┼─────┼─────┼─────┼─────┼─────┤
+│     │  ;  │  4  │  5  │  6  │  =  │   │     │ ⇧  │ ⌃  │ ⌥  │ ⌘  │     │
+├─────┼─────┼─────┼─────┼─────┼─────┤   ├─────┼─────┼─────┼─────┼─────┼─────┤
+│     │  `  │  1  │  2  │  3  │  \  │   │     │ NUM │ NAV │ ⌥R │     │     │
+╰─────┴─────┴──┬──┴──┬──┴──┬──┴─────╯   ╰─────┴──┬──┴──┬──┴──┬──┴─────┴─────╯
+               │  .  │  0  │  -  │           │     │█████│     │
+               ╰─────┴─────┴─────╯           ╰─────┴─────┴─────╯
+```
+
+---
+
+## Sym — зажать RET
+
+```
+╭─────┬─────┬─────┬─────┬─────┬─────╮   ╭─────┬─────┬─────┬─────┬─────┬─────╮
+│     │  {  │  &  │  *  │  (  │  }  │   │     │BASE │EXTRA│ TAP │BOOT │     │
+├─────┼─────┼─────┼─────┼─────┼─────┤   ├─────┼─────┼─────┼─────┼─────┼─────┤
+│     │  :  │  $  │  %  │  ^  │  +  │   │     │ ⇧  │ ⌃  │ ⌥  │ ⌘  │     │
+├─────┼─────┼─────┼─────┼─────┼─────┤   ├─────┼─────┼─────┼─────┼─────┼─────┤
+│     │  ~  │  !  │  @  │  #  │  |  │   │     │ SYM │MOUSE│ ⌥R │     │     │
+╰─────┴─────┴──┬──┴──┬──┴──┬──┴─────╯   ╰─────┴──┬──┴──┬──┴──┬──┴─────┴─────╯
+               │  (  │  )  │  _  │           │█████│     │     │
+               ╰─────┴─────┴─────╯           ╰─────┴─────┴─────╯
+```
+
+---
+
+## Fun — зажать ⌘SPC
+
+```
+╭─────┬─────┬─────┬─────┬─────┬─────╮   ╭─────┬─────┬─────┬─────┬─────┬─────╮
+│     │ F12 │ F7  │ F8  │ F9  │PSCRN│   │     │BASE │EXTRA│ TAP │BOOT │     │
+├─────┼─────┼─────┼─────┼─────┼─────┤   ├─────┼─────┼─────┼─────┼─────┼─────┤
+│     │ F11 │ F4  │ F5  │ F6  │SLCK │   │     │ ⇧  │ ⌃  │ ⌥  │ ⌘  │     │
+├─────┼─────┼─────┼─────┼─────┼─────┤   ├─────┼─────┼─────┼─────┼─────┼─────┤
+│     │ F10 │ F1  │ F2  │ F3  │PAUSE│   │     │ FUN │MEDIA│ ⌥R │     │     │
+╰─────┴─────┴──┬──┴──┬──┴──┬──┴─────╯   ╰─────┴──┬──┴──┬──┴──┬──┴─────┴─────╯
+               │ APP │ SPC │ TAB │           │     │     │█████│
+               ╰─────┴─────┴─────╯           ╰─────┴─────┴─────╯
+```
+
+---
+
+## Media — зажать ESC
+
+```
+╭─────┬─────┬─────┬─────┬─────┬─────╮   ╭─────┬─────┬─────┬─────┬─────┬─────╮
+│     │BOOT │ TAP │EXTRA│BASE │     │   │ RGB │ EFF │VOL +│ HUE │ SAT │     │
+├─────┼─────┼─────┼─────┼─────┼─────┤   ├─────┼─────┼─────┼─────┼─────┼─────┤
+│     │ ⌘  │ ⌥  │ ⌃  │ ⇧  │     │   │  EP │PREV │VOL -│NEXT │ BRI │     │
+├─────┼─────┼─────┼─────┼─────┼─────┤   ├─────┼─────┼─────┼─────┼─────┼─────┤
+│     │     │ ⌥R │ FUN │MEDIA│     │   │ OUT │ BT0 │ BT1 │ BT2 │ BT3 │     │
+╰─────┴─────┴──┬──┴──┬──┴──┬──┴─────╯   ╰─────┴──┬──┴──┬──┴──┬──┴─────┴─────╯
+               │█████│     │     │           │STOP │ PP  │MUTE │
+               ╰─────┴─────┴─────╯           ╰─────┴─────┴─────╯
+```
+
+BT0-BT3: тап = выбрать, shift+тап = очистить
+
+---
+
+## Mouse — зажать TAB
+
+```
+╭─────┬─────┬─────┬─────┬─────┬─────╮   ╭─────┬─────┬─────┬─────┬─────┬─────╮
+│     │BOOT │ TAP │EXTRA│BASE │     │   │     │ SC← │ MS↑ │ SC→ │ SC↑ │     │
+├─────┼─────┼─────┼─────┼─────┼─────┤   ├─────┼─────┼─────┼─────┼─────┼─────┤
+│     │ ⌘  │ ⌥  │ ⌃  │ ⇧  │     │   │     │ MS← │ MS↓ │ MS→ │ SC↓ │     │
+├─────┼─────┼─────┼─────┼─────┼─────┤   ├─────┼─────┼─────┼─────┼─────┼─────┤
+│     │     │ ⌥R │ SYM │MOUSE│     │   │REDO │PASTE│COPY │ CUT │UNDO │     │
+╰─────┴─────┴──┬──┴──┬──┴──┬──┴─────╯   ╰─────┴──┬──┴──┬──┴──┬──┴─────┴─────╯
+               │     │     │█████│           │BTN2 │BTN1 │BTN3 │
+               ╰─────┴─────┴─────╯           ╰─────┴─────┴─────╯
+```
+
+---
+
+## Как прошить
+
+1. Редактировать `config/blecorne.keymap`
+2. Push → GitHub Actions собирает автоматически
+3. Скачать `.uf2` из Actions → Artifacts
+4. USB → двойной тап reset → перетащить `.uf2` на появившийся диск
+5. Прошить обе половины отдельно (`_left` и `_right`)
+
+## Ссылки
+
+- [Miryoku](https://github.com/manna-harbour/miryoku)
+- [Wireless SMT Corne Docs](https://boardsource.xyz/blogs/guides/wireless-smt-corne-docs)
+- [ZMK Docs](https://zmk.dev/docs)
