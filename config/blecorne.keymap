@@ -257,16 +257,16 @@ MIRYOKU_DOUBLE_TAP_GUARD(u_to_U_FUN,    &to U_FUN)
     //
     // ,------------------------------------------.  ,------------------------------------------.
     // |      | BOOT | TAP  | EXTRA| BASE |      |  | REDO | PASTE| COPY | CUT  | UNDO |      |
-    // |      | GUI  | ALT  | CTRL | SHIFT|      |  | CAPS |  ←   |  ↓   |  ↑   |  →   |      |
-    // |      |      | RALT | NUM  | NAV  |      |  | INS  | HOME | PGDN | PGUP | END  |      |
+    // |      | GUI  | ALT  | CTRL | SHIFT|      |  |  ←   |  ↓   |  ↑   |  →   | CAPS |      |
+    // |      |      | RALT | NUM  | NAV  |      |  | HOME | PGDN | PGUP | END  | INS  |      |
     // `-------------|      |      |      |-------.  .------| RET  | BSPC | DEL  |-------------'
 
     NAV {
       display-name = "Nav";
       bindings = <
 &none              &bootloader        &u_to_U_TAP        &u_to_U_EXTRA      &u_to_U_BASE       &none                &kp LS(LG(Z))      &kp LG(V)          &kp LG(C)          &kp LG(X)          &kp LG(Z)          &none
-&none              &kp LGUI           &kp LALT           &kp LCTRL          &kp LSHFT          &none                &u_caps_word       &kp LEFT           &kp DOWN           &kp UP             &kp RIGHT          &none
-&none              &none              &kp RALT           &u_to_U_NUM        &u_to_U_NAV        &none                &kp INS            &kp HOME           &kp PG_DN          &kp PG_UP          &kp END            &none
+&none              &kp LGUI           &kp LALT           &kp LCTRL          &kp LSHFT          &none                &kp LEFT           &kp DOWN           &kp UP             &kp RIGHT          &u_caps_word       &none
+&none              &none              &kp RALT           &u_to_U_NUM        &u_to_U_NAV        &none                &kp HOME           &kp PG_DN          &kp PG_UP          &kp END            &kp INS            &none
                                        &none              &none              &none              &kp RET            &kp BSPC           &kp DEL
       >;
     };
@@ -275,16 +275,16 @@ MIRYOKU_DOUBLE_TAP_GUARD(u_to_U_FUN,    &to U_FUN)
     //
     // ,------------------------------------------.  ,------------------------------------------.
     // |      | BOOT | TAP  | EXTRA| BASE |      |  | REDO | PASTE| COPY | CUT  | UNDO |      |
-    // |      | GUI  | ALT  | CTRL | SHIFT|      |  | SC↑  | MS←  | MS↓  | MS↑  | MS→  |      |
-    // |      |      | RALT | SYM  | MOUSE|      |  | SC↓  | SC←  | WH_D | WH_U | SC→  |      |
+    // |      | GUI  | ALT  | CTRL | SHIFT|      |  | MS←  | MS↓  | MS↑  | MS→  |      |      |
+    // |      |      | RALT | SYM  | MOUSE|      |  | SC←  | SC↓  | SC↑  | SC→  |      |      |
     // `-------------|      |      |      |-------.  .------| BTN2 | BTN1 | BTN3 |-------------'
 
     MOUSE {
       display-name = "Mouse";
       bindings = <
 &none              &bootloader        &u_to_U_TAP        &u_to_U_EXTRA      &u_to_U_BASE       &none                &kp LS(LG(Z))      &kp LG(V)          &kp LG(C)          &kp LG(X)          &kp LG(Z)          &none
-&none              &kp LGUI           &kp LALT           &kp LCTRL          &kp LSHFT          &none                &msc SCRL_UP       &mmv MOVE_LEFT     &mmv MOVE_DOWN     &mmv MOVE_UP       &mmv MOVE_RIGHT    &none
-&none              &none              &kp RALT           &u_to_U_SYM        &u_to_U_MOUSE      &none                &msc SCRL_DOWN     &msc SCRL_LEFT     &msc SCRL_DOWN     &msc SCRL_UP       &msc SCRL_RIGHT    &none
+&none              &kp LGUI           &kp LALT           &kp LCTRL          &kp LSHFT          &none                &mmv MOVE_LEFT     &mmv MOVE_DOWN     &mmv MOVE_UP       &mmv MOVE_RIGHT    &none              &none
+&none              &none              &kp RALT           &u_to_U_SYM        &u_to_U_MOUSE      &none                &msc SCRL_LEFT     &msc SCRL_DOWN     &msc SCRL_UP       &msc SCRL_RIGHT    &none              &none
                                        &none              &none              &none              &mkp MB2           &mkp MB1           &mkp MB3
       >;
     };
@@ -292,17 +292,17 @@ MIRYOKU_DOUBLE_TAP_GUARD(u_to_U_FUN,    &to U_FUN)
     // ===== Layer 6: MEDIA (Vim-style - hjkl positions) =====
     //
     // ,------------------------------------------.  ,------------------------------------------.
-    // |      | BOOT | TAP  | EXTRA| BASE |      |  | RGB  | EFF  |RGBHUI|RGBSAI|RGBBRI|      |
-    // |      | GUI  | ALT  | CTRL | SHIFT|      |  |EP_TOG| PREV | VLDN | VLUP | NEXT |      |
-    // |      |      | RALT | FUN  | MEDIA|      |  |OUTTOG| BT0  | BT1  | BT2  | BT3  |      |
+    // |      | BOOT | TAP  | EXTRA| BASE |      |  | RGB  | EFF  | HUE  | SAT  | BRI  |      |
+    // |      | GUI  | ALT  | CTRL | SHIFT|      |  | PREV |VOL - |VOL + | NEXT |EP_TOG|      |
+    // |      |      | RALT | FUN  | MEDIA|      |  | BT0  | BT1  | BT2  | BT3  |OUTTOG|      |
     // `-------------|      |      |      |-------.  .------| STOP |  PP  | MUTE |-------------'
 
     MEDIA {
       display-name = "Media";
       bindings = <
 &none              &bootloader        &u_to_U_TAP        &u_to_U_EXTRA      &u_to_U_BASE       &none                &rgb_ug RGB_TOG    &rgb_ug RGB_EFF    &rgb_ug RGB_HUI    &rgb_ug RGB_SAI    &rgb_ug RGB_BRI    &none
-&none              &kp LGUI           &kp LALT           &kp LCTRL          &kp LSHFT          &none                &ext_power EP_TOG  &kp C_PREV         &kp C_VOL_DN       &kp C_VOL_UP       &kp C_NEXT         &none
-&none              &none              &kp RALT           &u_to_U_FUN        &u_to_U_MEDIA      &none                &u_out_tog         &u_bt_sel_0        &u_bt_sel_1        &u_bt_sel_2        &u_bt_sel_3        &none
+&none              &kp LGUI           &kp LALT           &kp LCTRL          &kp LSHFT          &none                &kp C_PREV         &kp C_VOL_DN       &kp C_VOL_UP       &kp C_NEXT         &ext_power EP_TOG  &none
+&none              &none              &kp RALT           &u_to_U_FUN        &u_to_U_MEDIA      &none                &u_bt_sel_0        &u_bt_sel_1        &u_bt_sel_2        &u_bt_sel_3        &u_out_tog         &none
                                        &none              &none              &none              &kp C_STOP         &kp C_PP           &kp C_MUTE
       >;
     };
