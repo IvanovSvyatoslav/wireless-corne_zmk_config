@@ -1,5 +1,5 @@
 // Miryoku ZMK keymap for BLE Corne (3x6+3 = 42 keys)
-// Options: QWERTY alphas, INVERTEDT nav, MAC clipboard
+// Options: QWERTY alphas, Vim-style nav, MAC clipboard
 // Extra pinky columns: GRAVE/EQUAL/LBKT (left), SQT/MINUS/RBKT (right)
 //
 // Based on: https://github.com/manna-harbour/miryoku_zmk
@@ -201,9 +201,9 @@ MIRYOKU_DOUBLE_TAP_GUARD(u_to_U_FUN,    &to U_FUN)
     //
     // ,------------------------------------------.  ,------------------------------------------.
     // | GRAVE|  Q   |  W   |  E   |  R   |  T   |  |  Y   |  U   |  I   |  O   |  P   | SQT  |
-    // | EQUAL| A/GUI| S/ALT| D/CTL| F/SFT|  G   |  |  H   | J/SFT| K/CTL| L/ALT|'/GUI | MINUS|
+    // | EQUAL| A/GUI| S/ALT| D/CTL| F/SFT|  G   |  |  H   | J/SFT| K/CTL| L/ALT|;/GUI | MINUS|
     // | LBKT | Z/BTN| X/ALT|  C   |  V   |  B   |  |  N   |  M   |  ,   | ./ALT|//BTN | RBKT |
-    // `-------------| ESC  | SPACE| TAB  |-------.  .------| RET  | BSPC | DEL  |-------------'
+    // `-------------| ESC  | SPACE| TAB  |-------.  .------| RET  | BSPC |C-O-SP|-------------'
     //               |MEDIA | NAV  | MOUSE|              SYM|  NUM |  FUN |
     //               `---------------------'              `---------------------'
 
@@ -213,7 +213,7 @@ MIRYOKU_DOUBLE_TAP_GUARD(u_to_U_FUN,    &to U_FUN)
 &kp GRAVE          &kp Q              &kp W              &kp E              &kp R              &kp T                &kp Y              &kp U              &kp I              &kp O              &kp P              &kp SQT
 &kp EQUAL          &u_mt LGUI A       &u_mt LALT S       &u_mt LCTRL D      &u_mt LSHFT F      &kp G                &kp H              &u_mt LSHFT J      &u_mt LCTRL K      &u_mt LALT L       &u_mt LGUI SEMI    &kp MINUS
 &kp LBKT           &u_lt U_BUTTON Z   &u_mt RALT X       &kp C              &kp V              &kp B                &kp N              &kp M              &kp COMMA          &u_mt RALT DOT     &u_lt U_BUTTON SLASH &kp RBKT
-                                       &u_lt U_MEDIA ESC  &u_lt U_NAV SPACE  &u_lt U_MOUSE TAB  &u_lt U_SYM RET    &u_lt U_NUM BSPC   &u_lt U_FUN F18
+                                       &u_lt U_MEDIA ESC  &u_lt U_NAV SPACE  &u_lt U_MOUSE TAB  &u_lt U_SYM RET    &u_lt U_NUM BSPC   &u_lt U_FUN LC(LA(SPACE))
       >;
     };
 
@@ -225,7 +225,7 @@ MIRYOKU_DOUBLE_TAP_GUARD(u_to_U_FUN,    &to U_FUN)
 &none              &kp Q              &kp W              &kp E              &kp R              &kp T                &kp Y              &kp U              &kp I              &kp O              &kp P              &none
 &none              &u_mt LGUI A       &u_mt LALT S       &u_mt LCTRL D      &u_mt LSHFT F      &kp G                &kp H              &u_mt LSHFT J      &u_mt LCTRL K      &u_mt LALT L       &u_mt LGUI SEMI    &none
 &none              &u_lt U_BUTTON Z   &u_mt RALT X       &kp C              &kp V              &kp B                &kp N              &kp M              &kp COMMA          &u_mt RALT DOT     &u_lt U_BUTTON SLASH &none
-                                       &u_lt U_MEDIA ESC  &u_lt U_NAV SPACE  &u_lt U_MOUSE TAB  &u_lt U_SYM RET    &u_lt U_NUM BSPC   &u_lt U_FUN F18
+                                       &u_lt U_MEDIA ESC  &u_lt U_NAV SPACE  &u_lt U_MOUSE TAB  &u_lt U_SYM RET    &u_lt U_NUM BSPC   &u_lt U_FUN LC(LA(SPACE))
       >;
     };
 
